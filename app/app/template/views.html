@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Data Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .stats-bar {
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="/">Home</a>
+        <a href="/devices">Devices</a>
+        <a href="/about">About</a>
+    </nav>
+
+    <!-- Statistics Bar -->
+    <div class="stats-bar">
+        <span><strong>Average Power Consumption:</strong> {{ avg_power }} W</span>
+        <span><strong>Peak Power Consumption:</strong> {{ peak_power }} W</span>
+    </div>
+
+    <!-- Device Data Table -->
+    <h1>Device Data Table</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Serial Number</th>
+                <th>Device ID</th>
+                <th>Current (A)</th>
+                <th>Power (W)</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for device in data %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ device.deviceid }}</td>
+                <td>{{ device.current }}</td>
+                <td>{{ device.power }}</td>
+                <td>{{ device.timestamp }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No data available</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
