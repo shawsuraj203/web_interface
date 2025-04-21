@@ -50,6 +50,23 @@
             background-color: #f5f5f5;
         }
     </style>
+    <script>
+        // Prevent browser from restoring previous scroll position
+        history.scrollRestoration = 'manual';
+
+        // Function to scroll to the bottom
+        function scrollToBottom() {
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+
+        // Scroll to bottom when the page loads
+        window.onload = scrollToBottom;
+
+        // Reload the page every 60 seconds (60000 ms)
+        setTimeout(function() {
+            window.location.reload();
+        }, 60000);
+    </script>
 </head>
 <body>
     <!-- Navigation Menu -->
@@ -66,7 +83,7 @@
     </div>
 
     <!-- Device Data Table -->
-    <h1>Device Data Table</h1>
+    <h1>Power Consumption Data:</h1>
     <table>
         <thead>
             <tr>

@@ -25,7 +25,7 @@ def data(request):
             for item in body_data:
                 if type(item) == dict:
                     sens_data.append(item)
-            print (sens_data)
+            #print (sens_data)
             # Respond with a success message
             return JsonResponse({"message": "Data received successfully", "data": body_data}, status=200)
 
