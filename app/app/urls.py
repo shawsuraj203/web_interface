@@ -22,4 +22,7 @@ urlpatterns = [
     path('home/', views.home, name="home"),
     path('data/', views.data, name="data"),
     path('read/', views.read, name='read'),
+    path('', views.home, name='home'),         # Home page
+    path('devices/', views.devices, name='devices'),  # Devices page
+    path('about/', views.about, name='about'), # About page
 ]

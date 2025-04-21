@@ -2,11 +2,9 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 import json
+import time
 
 sens_data = []
-
-def home(request):
-    return HttpResponse("Welcome to your Django app!")
 
 @csrf_exempt
 def data(request):
@@ -55,3 +53,21 @@ def avg_peak_power():
         avg_pwr = sum(power_list)/count
         peak = max(power_list)
     return avg_pwr, peak
+
+def home(request):
+    return render(request, 'home.html')
+
+def devices(request):
+    # Example data, replace with your actual queryset or data source
+    devices = [
+        {'deviceid': '0', 'name': 'Main Meter', 'status': 'online', 'last_seen': '{0}'.format(time.strftime('%Y-%m-%d %H:%M:%S'))},
+        {'deviceid': '1', 'name': 'AC Unit', 'status': 'offline', 'last_seen': '2025-03-31 19:44:10'},
+        {'deviceid': '2', 'name': 'Geysers', 'status': 'offline', 'last_seen': '2025-03-31 19:44:10'},
+        {'deviceid': '2', 'name': 'Outdoor', 'status': 'online', 'last_seen': '{0}'.format(time.strftime('%Y-%m-%d %H:%M:%S'))},
+        # ... more devices ...
+    ]
+    return render(request, 'devices.html', {'devices': devices})
+
+
+def about(request):
+    return render(request, 'about.html')
