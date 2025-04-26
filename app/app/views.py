@@ -63,7 +63,7 @@ def devices(request):
         {'deviceid': '0', 'name': 'Main Meter', 'status': 'online', 'last_seen': '{0}'.format(time.strftime('%Y-%m-%d %H:%M:%S'))},
         {'deviceid': '1', 'name': 'AC Unit', 'status': 'offline', 'last_seen': '2025-03-31 19:44:10'},
         {'deviceid': '2', 'name': 'Geysers', 'status': 'offline', 'last_seen': '2025-03-31 19:44:10'},
-        {'deviceid': '2', 'name': 'Outdoor', 'status': 'online', 'last_seen': '{0}'.format(time.strftime('%Y-%m-%d %H:%M:%S'))},
+        {'deviceid': '3', 'name': 'Outdoor', 'status': 'online', 'last_seen': '{0}'.format(time.strftime('%Y-%m-%d %H:%M:%S'))},
         # ... more devices ...
     ]
     return render(request, 'devices.html', {'devices': devices})
